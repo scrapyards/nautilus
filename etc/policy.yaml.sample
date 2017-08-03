@@ -1,0 +1,20 @@
+#
+#"admin_required": "role:admin or is_admin:1"
+
+#
+#"service_or_admin": "rule:admin_required or rule:service_role"
+
+#
+#"service_role": "role:service"
+
+#
+#"owner": "user_id:%(user_id)s"
+
+# List documents
+# GET  /v1/documents/
+#"nautilus:get_documents": "rule:service_or_admin"
+
+# List documents
+# POST  /v1/documents/
+#"nautilus:get_documents": "rule:admin_required"
+
