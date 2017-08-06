@@ -2,13 +2,12 @@
 Nautilus
 ========
 
-OpenStack-Helm Undercloud Nautilus
+This project builds out a basic falcon-based WSGI server powered by
+OpenStack framework and libraries.  The restFUL calls is backed
+by OpenStack Identity service (keystone) with RBAC support.
 
-This is a template project.
+TODO
+----
 
-* Free software: Apache license
-
-Features
---------
-
-* TODO
+* Fix configuration files finding
+* Add better logging support
