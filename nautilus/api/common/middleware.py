@@ -12,12 +12,12 @@
 
 import json
 
-import falcon
 from oslo_log import log
 import webob.dec
 import webob.exc
 
 from nautilus import exceptions as n_exc
+
 
 LOG = log.getLogger(__name__)
 
@@ -94,8 +94,7 @@ class HookableMiddlewareMixin(object):
                                 "{0} - {1}")
             message = message_template.format(self.__name__, ex.message)
             LOG.error(message)
-            LOG.exception(ex)
-            raise freezer_api_exc.FreezerAPIException(message)
+            raise n_exc.APIException(message)
 
     def as_after_hook(self):
         """Extract process_response method as "after" hook
@@ -115,14 +114,13 @@ class HookableMiddlewareMixin(object):
                                 "{0} - {1}")
             message = message_template.format(self.__name__, ex.message)
             LOG.error(message)
-            LOG.exception(ex)
-            raise freezer_api_exc.FreezerAPIException(message)
+            raise n_exc.APIException(message)
 
 
 class RequireJSON(HookableMiddlewareMixin, object):
     def process_request(self, req, resp):
         if not req.client_accepts_json:
-            raise falcon.HTTPNotAcceptable('Not acceptable encoding.')
+            raise n_exc.JSONException('Unacceptable JSON')
 
 
 class JSONTranslator(HookableMiddlewareMixin, object):

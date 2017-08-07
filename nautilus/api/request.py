@@ -14,8 +14,6 @@ import falcon
 
 from oslo_context import context
 
-from nautilus import exceptions as n_exc
-
 
 class Request(falcon.Request):
 

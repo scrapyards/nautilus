@@ -33,5 +33,13 @@ class NautilusException(falcon.HTTPError):
 
 class ActionForbidden(NautilusException):
     status = falcon.HTTP_403
-    message = "Insufficient privilege to perform action."
-    title = "Action Forbidden"
+    message = _("Insufficient privilege to perform action.")
+    title = _("Action Forbidden")
+
+
+class JSONException(NautilusException):
+    status = falcon.HTTP_NOT_ACCEPTABLE
+
+
+class APIException(NautilusException):
+    status = falcon.HTTP_400

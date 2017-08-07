@@ -10,17 +10,15 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import functools
-import sys
-
 import falcon
 from oslo_config import cfg
 from oslo_log import log
 
-from nautilus.common import policy
-from nautilus import api
-from nautilus.api.common import middleware
+from nautilus.api import request
 from nautilus.api import v1
+from nautilus.api.common import middleware
+from nautilus.common import policy
+
 
 CONF = cfg.CONF
 LOG = log.getLogger(__name__)
@@ -41,7 +39,7 @@ def nautilus_app_factory(global_config, **local_config):
     middleware_list = list()
     middleware_list.append(middleware.JSONTranslator())
 
-    app = falcon.API(request_type=api.request.Request,
+    app = falcon.API(request_type=request.Request,
                      middleware=middleware_list)
 
     return configure_app(app, version='/v1')

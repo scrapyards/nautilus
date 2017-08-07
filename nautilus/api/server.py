@@ -13,16 +13,13 @@
 import logging as py_logging
 import os
 
-import falcon
 from oslo_config import cfg
 from oslo_log import log
 from oslo_policy import policy
 from paste import deploy
-from paste import urlmap
 from wsgiref import simple_server
 
 from nautilus import version
-from nautilus.api import request
 from nautilus.common.i18n import _
 
 
