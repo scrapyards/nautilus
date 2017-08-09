@@ -47,8 +47,7 @@ def init_application(base=None, **kwargs):
 
     # FIXME (lamt) clean up this find config's logic
     if config_path is None:
-        config_path = os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), '../../etc')
+        config_path = '/etc/nautilus'
 
     config_file = os.path.join(config_path, config_file)
     paste_file = os.path.join(config_path, paste_file)
