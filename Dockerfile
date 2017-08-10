@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM gcr.io/google_containers/ubuntu-slim:0.13
 
 ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=nautilus
@@ -21,3 +21,6 @@ RUN set -x \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
     && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
     && /tmp/common/scripts/install.sh
+
+ENV PORT=9980
+ENTRYPOINT ["/opt/nautilus/entrypoint.sh"]
