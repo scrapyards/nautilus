@@ -18,6 +18,15 @@ from nautilus import exceptions as exc
 
 
 class BaseResource(object):
+    """Base resource class for RESTful API calls."""
+
+    def on_options(self, request, response):
+        methods = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'PATCH']
+        allowed_methods = [m for m in methods if 'on_' + m.lower()
+                           in dir(self)]
+
+        response.headers['Allow'] = ','.join(allowed_methods)
+        response.status = falcon.HTTP_200
 
     @staticmethod
     def json_body(req):

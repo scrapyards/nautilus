@@ -19,8 +19,8 @@ from oslo_policy import policy
 from paste import deploy
 from wsgiref import simple_server
 
-from nautilus import version
 from nautilus.common.i18n import _
+from nautilus import version
 
 
 CONF = cfg.CONF

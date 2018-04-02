@@ -14,9 +14,9 @@ import falcon
 from oslo_config import cfg
 from oslo_log import log
 
+from nautilus.api import middleware
 from nautilus.api import request
 from nautilus.api import v1
-from nautilus.api.common import middleware
 from nautilus.common import policy
 
 

@@ -12,19 +12,19 @@
 
 import falcon
 
-from nautilus.api.common import resource
+from nautilus.api import base
 from nautilus.common import policy
 
 
-class DocumentsListResource(resource.BaseResource):
+class DocumentsListResource(base.BaseResource):
 
     @policy.enforce('nautilus:get_documents')
-    def on_get(self, req, resp):
+    def on_get(self, request, response):
         # GET /v1/documents  -  Lists documents
-        resp.body = {'getdoc': 'mmm'}
-        resp.status = falcon.HTTP_200
+        response.body = {'getdoc': 'mmm'}
+        response.status = falcon.HTTP_200
 
     @policy.enforce('nautilus:create_documents')
-    def on_post(self, req, resp):
-        resp.status = falcon.HTTP_201
-        resp.body = {'post_doc': 'BLAH BLAH BLAH'}
+    def on_post(self, request, response):
+        response.status = falcon.HTTP_201
+        response.body = {'post_doc': 'BLAH BLAH BLAH'}
